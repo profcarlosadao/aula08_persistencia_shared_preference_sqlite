@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: inputDecoration(label: "Informe password"),
               ),
             ),
-            ElevatedButton(onPressed: _onPressed, child: const Text("Salvar")),
+            ElevatedButton(onPressed: _onPressed, child: const Text("Entrar")),
             Padding(
               padding: const EdgeInsets.only(top: 30),
               child: Row(
