@@ -1,3 +1,4 @@
+import 'package:aula08_persistencia_shared_preference_sqlite/screens/register.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../util/snippets.dart';
@@ -92,7 +93,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const Text("Não tem conta? "),
                   InkWell(
                     onTap: (){
-                      openRoute(context, const LoginScreen());
+                      openRoute(context, const RegisterScreen());
                     },
                     child: const Text(
                       "Cadastro",

@@ -35,9 +35,9 @@ class LoginController extends GetxController {
       isValid = false;
     }
 
-    if (!isValid) {
+    if (isValid) {
       String? resEmail = await _preference.load("email");
-      String? resPassword = await _preference.load("email");
+      String? resPassword = await _preference.load("password");
       if (email == resEmail && password == resPassword) {
         logged.value = true;
       } else {

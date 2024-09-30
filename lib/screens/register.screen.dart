@@ -50,58 +50,60 @@ class _RegisterScreenState extends State<RegisterScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          const Text(
-            "Cadastro",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: TextFormField(
-              controller: _nameTextEditController,
-              decoration: inputDecoration(label: "informe o nome"),
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text(
+              "Cadastro",
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: TextFormField(
-              controller: _emailTextEditController,
-              decoration: inputDecoration(label: "informe o nome"),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextFormField(
+                controller: _nameTextEditController,
+                decoration: inputDecoration(label: "informe o nome"),
+              ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: TextFormField(
-              controller: _passwordTextEditController,
-              decoration: inputDecoration(label: "informe o nome"),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextFormField(
+                controller: _emailTextEditController,
+                decoration: inputDecoration(label: "informe o email"),
+              ),
             ),
-          ),
-          ElevatedButton(onPressed: _onPressed, child: const Text("Salvar")),
-           Padding(
-            padding: const EdgeInsets.only(top: 50),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text("Já tem conta? "),
-                InkWell(
-                  onTap: (){
-                    openRoute(context, const LoginScreen());
-                  },
-                  child: const Text(
-                    "Login",
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextFormField(
+                controller: _passwordTextEditController,
+                decoration: inputDecoration(label: "informe o password"),
+              ),
+            ),
+            ElevatedButton(onPressed: _onPressed, child: const Text("Salvar")),
+             Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Já tem conta? "),
+                  InkWell(
+                    onTap: (){
+                      openRoute(context, const LoginScreen());
+                    },
+                    child: const Text(
+                      "Login",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            ),
-          )
-        ],
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
