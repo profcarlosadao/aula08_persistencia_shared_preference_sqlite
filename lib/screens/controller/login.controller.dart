@@ -5,16 +5,18 @@ class LoginController extends GetxController {
   final Rx<String?> _name = Rx(null);
   final Rx<String?> _password = Rx(null);
   final Rx<String?> message = Rx(null);
+  final Rx<bool> logged = Rx(false);
   late SharedPreferenceDataSource _preference;
 
   LoginController() {
-    _preference = SharedPreferenceDataSource();
+    initController();
   }
 
   String get name => _name.value ?? "";
   String get password => _password.value ?? "";
 
   initController() async {
+    _preference = SharedPreferenceDataSource();
     await _preference.initPreference();
   }
 
@@ -33,6 +35,7 @@ class LoginController extends GetxController {
     if (!hasError) {
       _preference.save('email', name);
       _preference.save('password', password);
+      logged.value = true;
     }
   }
 }
