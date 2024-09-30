@@ -31,9 +31,10 @@ class LoginController extends GetxController {
     }
 
     if (password.isEmpty) {
-      message.value = "O nome não pode ser vazio";
+      message.value = "O email não pode ser vazio";
       isValid = false;
     }
+
     if (!isValid) {
       String? resEmail = await _preference.load("email");
       String? resPassword = await _preference.load("email");
