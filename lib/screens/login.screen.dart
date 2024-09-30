@@ -19,9 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  _onPressed() {
-
-  }
+  _onPressed() {}
 
   @override
   Widget build(BuildContext context) {
