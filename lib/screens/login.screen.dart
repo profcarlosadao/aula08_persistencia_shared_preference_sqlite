@@ -33,6 +33,12 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _listener() {
+    _disposers.add(ever(_loginController.message, (String? value) {
+      if(value != null){
+        _loginController.message.value = null;
+        snackBar(context, value);
+      }
+    }).call);
     _disposers.add(ever(_loginController.logged, (bool value) {
       if(value){
         openRoute(context, const PostCreateScreen());
