@@ -7,12 +7,21 @@ class SharedPreferenceDataSource {
     prefs = await SharedPreferences.getInstance();
   }
 
-  save(String key, String value) async {
-    await prefs.setString(key, value);
+  Future<bool> isLogged() async {
+    final bool? action = prefs.getBool("logged");
+    return action ?? false;
+  }
+
+  saveLogged(String value) async {
+    await prefs.setString("logged", value);
   }
 
   Future<String?> load(String key) async {
     final String? action = prefs.getString(key);
     return action;
+  }
+
+  save(String key, String value) async {
+    await prefs.setString(key, value);
   }
 }

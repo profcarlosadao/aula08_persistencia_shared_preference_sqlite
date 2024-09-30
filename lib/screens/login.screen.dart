@@ -1,8 +1,8 @@
-import 'package:aula08_persistencia_shared_preference_sqlite/screens/post_create.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../util/snippets.dart';
 import 'controller/login.controller.dart';
+import 'post_create.screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -32,7 +32,6 @@ class _LoginScreenState extends State<LoginScreen> {
     super.dispose();
   }
 
-  //Defininindo o ouvinte
   _listener() {
     _disposers.add(ever(_loginController.logged, (bool value) {
       if(value){
@@ -57,11 +56,14 @@ class _LoginScreenState extends State<LoginScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              "Login",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+            const Padding(
+              padding: EdgeInsets.only(bottom: 20),
+              child: Text(
+                "Login",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
             TextFormField(
@@ -75,7 +77,28 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: inputDecoration(label: "Informe password"),
               ),
             ),
-            ElevatedButton(onPressed: _onPressed, child: const Text("Salvar"))
+            ElevatedButton(onPressed: _onPressed, child: const Text("Salvar")),
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text("Não tem conta? "),
+                  InkWell(
+                    onTap: (){
+                      openRoute(context, const LoginScreen());
+                    },
+                    child: const Text(
+                      "Cadastro",
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

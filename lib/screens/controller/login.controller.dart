@@ -13,29 +13,35 @@ class LoginController extends GetxController {
   }
 
   String get name => _name.value ?? "";
+
   String get password => _password.value ?? "";
 
   initController() async {
     _preference = SharedPreferenceDataSource();
     await _preference.initPreference();
+    logged.value = await _preference.isLogged();
   }
 
-  save(String name, String password) async {
-    bool hasError = false;
+  save(String email, String password) async {
+    bool isValid = true;
 
-    if (name.isEmpty) {
+    if (email.isEmpty) {
       message.value = "O nome não pode ser vazio";
-      hasError = true;
+      isValid = false;
     }
 
     if (password.isEmpty) {
       message.value = "O nome não pode ser vazio";
-      hasError = true;
+      isValid = false;
     }
-    if (!hasError) {
-      _preference.save('email', name);
-      _preference.save('password', password);
-      logged.value = true;
+    if (!isValid) {
+      String? resEmail = await _preference.load("email");
+      String? resPassword = await _preference.load("email");
+      if (email == resEmail && password == resPassword) {
+        logged.value = true;
+      } else {
+        message.value = "E-mail ou password incorreto!";
+      }
     }
   }
 }
